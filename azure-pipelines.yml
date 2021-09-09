@@ -27,10 +27,12 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
 
 - task: TerraformTaskV2@2
   displayName: "Terraform plan"
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     environmentServiceNameAzureRM: 'Pay-As-You-Go(2126cd96-2b4a-4f4b-b632-c93a8650e738)'
