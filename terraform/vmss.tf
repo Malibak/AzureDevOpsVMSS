@@ -109,7 +109,7 @@ resource "azurerm_virtual_machine_scale_set" "agentpool1_vmss1" {
 
   os_profile {
     computer_name_prefix = "adoagentpool1vm"
-    admin_username       = "admin"
+    admin_username       = "vmssadmin"
     admin_password       = "bnid!SjkKn@S78Kf"
   }
 
