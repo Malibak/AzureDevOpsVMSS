@@ -1,0 +1,36 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: TerraformInstaller@0
+  displayName: "Terraform install"
+  inputs:
+    terraformVersion: '1.0.6'
+
+- task: TerraformTaskV2@2
+  displayName: "Terraform init"
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    backendServiceArm: 'Pay-As-You-Go(2126cd96-2b4a-4f4b-b632-c93a8650e738)'
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmStorageAccountName: 'terraformmadslilbaek'
+    backendAzureRmContainerName: 'terraformbackend'
+    backendAzureRmKey: 'terraform.tfstate'
+
+- task: TerraformTaskV2@2
+  displayName: "Terraform validate"
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+- task: TerraformTaskV2@2
+  displayName: "Terraform plan"
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'Pay-As-You-Go(2126cd96-2b4a-4f4b-b632-c93a8650e738)'
