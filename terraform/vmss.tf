@@ -52,15 +52,6 @@ resource "azurerm_lb_nat_pool" "agentpool1_lb_natpool" {
   frontend_ip_configuration_name = "PublicIPAddress"
 }
 
-resource "azurerm_lb_probe" "agentpool1_lb_probe1" {
-  resource_group_name = azurerm_resource_group.agentpool1_rg.name
-  loadbalancer_id     = azurerm_lb.agentpool1_lb.id
-  name                = "http-probe"
-  protocol            = "Http"
-  request_path        = "/health"
-  port                = 8080
-}
-
 resource "azurerm_virtual_machine_scale_set" "agentpool1_vmss1" {
   name                = "ado-agentpool-1-vmss-1"
   location            = azurerm_resource_group.agentpool1_rg.location
@@ -78,7 +69,7 @@ resource "azurerm_virtual_machine_scale_set" "agentpool1_vmss1" {
   }
 
   # required when using rolling upgrade policy
-  health_probe_id = azurerm_lb_probe.agentpool1_lb_probe1.id
+  #health_probe_id = azurerm_lb_probe.agentpool1_lb_probe1.id
 
   sku {
     name     = "Standard_B1s"
