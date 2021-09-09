@@ -36,3 +36,11 @@ steps:
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     environmentServiceNameAzureRM: 'Pay-As-You-Go(2126cd96-2b4a-4f4b-b632-c93a8650e738)'
+
+- task: TerraformTaskV2@2
+  displayName: "Terraform apply"
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    environmentServiceNameAzureRM: 'Pay-As-You-Go(2126cd96-2b4a-4f4b-b632-c93a8650e738)'
