@@ -89,7 +89,7 @@ resource "azurerm_virtual_machine_scale_set" "agentpool1_vmss1" {
   storage_profile_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "20_04-lts-gen2"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 
