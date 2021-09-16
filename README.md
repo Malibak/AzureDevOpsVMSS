@@ -1,2 +1,2 @@
 # AzureDevOpsVMSS
-VMSS for Azure DevOps agent pool
+Example VMSS for Azure DevOps agent pool
